@@ -1,6 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var passwordLength = "";
+var passwordLength = 0;
+var password = "";
+var passwordText = document.querySelector("#password");
+// var length = ""; 
+var options = "";
+var finalArray = [];
+
 
 // JG - Button id = "generate"
 // prompt("How many characters in this password?")
@@ -8,12 +14,11 @@ function lengthPrompt (){
   var passwordLength =prompt("Confirm Password Length Between 8-128 Characters.");
     if (passwordLength < 8 || passwordLength >128 || isNaN(passwordLength)) {
       alert("Please enter value between 8 and 128");
-      lengthPrompt ();
+      //lengthPrompt ();
     } 
     return passwordLength;
 } 
 
-console.log(passwordLength);
 
 
 function optionsPrompt () {
@@ -43,14 +48,12 @@ function generatePassword () {
  var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] ;
 
 var specialCharacters = ["\\","\.","\+","\*","\?","\[","\^","\]","\$","\(","\)","\{","\}","\=","\!","\<","\>","\|","\:","\-"];
-// var specialCharacters = ["\."];
  
-  var length = lengthPrompt (); 
-  var options = optionsPrompt ();
-  var finalArray = [];
+  passwordLength = lengthPrompt (); 
+  options = optionsPrompt ();
+  finalArray = [];
 
-  console.log(length);
-  console.log(options);
+ 
   console.log(numbers.length);
   console.log(specialCharacters.length);
   console.log(specialCharacters);
@@ -67,25 +70,30 @@ var specialCharacters = ["\\","\.","\+","\*","\?","\[","\^","\]","\$","\(","\)",
   if (options.specialCharacters===true){
     finalArray = finalArray.concat(specialCharacters);
   }
- 
-  console.log(finalArray);
 
-  var i;
-  
-    for (i = 0; i < length; i++) {
-    var password = [Math.floor(Math.random() * finalArray.length)];
-  return password  
+  console.log("Do I see the finalArray? This should be the full list to pull from", finalArray);
+  return finalArray;
 }
-}
+
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword ();
+  var password = generatePassword();
+  var finalPassword = '';
+  console.log('this should be the generated password', password);
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  
+  console.log("this is what I type in for length", passwordLength);
+  
+  for (var i = 0; i < passwordLength; i++) {
+  finalPassword += finalArray[Math.floor(Math.random() * finalArray.length)];
+                 // finalArray[41] //whatever the element is in that position in the array
+    console.log('what is this password in the forloop question mark', finalPassword);
+}
+  passwordText.textContent = finalPassword;
 
 }
 
+// passwordText.value = password;
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword)
