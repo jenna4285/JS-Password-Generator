@@ -55,16 +55,16 @@ var specialCharacters = ["\\","\.","\+","\*","\?","\[","\^","\]","\$","\(","\)",
   console.log(specialCharacters.length);
   console.log(specialCharacters);
   
-  if (characterUppercase=true){
+  if (options.characterUppercase===true){
     finalArray = [].concat(finalArray, Uppercase);
   }
-  if (characterLowercase=true){
+  if (options.characterLowercase===true){
     finalArray = [].concat(finalArray, lowercase);
   }
-  if (includeNumbers=true){
+  if (options.includeNumbers===true){
     finalArray = [].concat(finalArray, numbers);
   }
-  if (specialCharacters===true){
+  if (options.specialCharacters===true){
     finalArray = finalArray.concat(specialCharacters);
   }
  
