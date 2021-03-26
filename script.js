@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var passwordLength = "";
 
 // JG - Button id = "generate"
 // prompt("How many characters in this password?")
@@ -10,8 +11,8 @@ function lengthPrompt (){
       lengthPrompt ();
     } 
     return passwordLength;
-    
 } 
+
 
 function optionsPrompt () {
     var characterUppercase = confirm("Click OK to Include Uppercase Letters."); 
@@ -34,11 +35,15 @@ function optionsPrompt () {
 
 function generatePassword () {
  var lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
  var Uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
  var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] ;
- var specialCharacters = ['@','%','+','\\','/',"'",'!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
+
+ var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
  
   var length = lengthPrompt (); 
+  console.log(lengthPrompt.length);
   var options = optionsPrompt ();
   var finalArray = [];
 
@@ -60,25 +65,20 @@ function generatePassword () {
     console.log(finalArray.length);
   }
   if (specialCharacters=true){
-    finalArray = [].concat(finalArray,specialCharacters);
+    finalArray = [].concat(finalArray, specialCharacters)
     console.log(finalArray.length);
   }
+  
 
   console.log(finalArray)
 
   var i;
-  function password() {
+  
     for (i = 0; i < length; i++) {
-      finalArray(Math.floor(math.random() * finalArray.length));
-    }
-
-    // create a for loop & use value in length
-    // inside loop = math.random() finalArray.length
-    // put returned random value in password
-    return password;
-  }
+    var password = [Math.floor(Math.random() * finalArray.length)];
+  return password  
 }
-
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -90,4 +90,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword)
