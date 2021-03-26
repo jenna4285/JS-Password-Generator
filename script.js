@@ -13,6 +13,8 @@ function lengthPrompt (){
     return passwordLength;
 } 
 
+console.log(passwordLength);
+
 
 function optionsPrompt () {
     var characterUppercase = confirm("Click OK to Include Uppercase Letters."); 
@@ -29,7 +31,7 @@ function optionsPrompt () {
     characterLowercase: characterLowercase,
     includeNumbers: includeNumbers,
     specialCharacters: specialCharacters,
-  }
+  };
     return optionsObj;
 }
 
@@ -40,37 +42,33 @@ function generatePassword () {
 
  var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] ;
 
- var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
+var specialCharacters = ["\\","\.","\+","\*","\?","\[","\^","\]","\$","\(","\)","\{","\}","\=","\!","\<","\>","\|","\:","\-"];
+// var specialCharacters = ["\."];
  
   var length = lengthPrompt (); 
-  console.log(lengthPrompt.length);
   var options = optionsPrompt ();
   var finalArray = [];
 
   console.log(length);
   console.log(options);
   console.log(numbers.length);
-  console.log(specialCharacters.length)
+  console.log(specialCharacters.length);
+  console.log(specialCharacters);
   
   if (characterUppercase=true){
-    finalArray = [].concat(finalArray, Uppercase)
-    console.log(finalArray.length);
-  };
+    finalArray = [].concat(finalArray, Uppercase);
+  }
   if (characterLowercase=true){
     finalArray = [].concat(finalArray, lowercase);
-    console.log(finalArray.length);
-  };
+  }
   if (includeNumbers=true){
     finalArray = [].concat(finalArray, numbers);
-    console.log(finalArray.length);
   }
-  if (specialCharacters=true){
-    finalArray = [].concat(finalArray, specialCharacters)
-    console.log(finalArray.length);
+  if (specialCharacters===true){
+    finalArray = finalArray.concat(specialCharacters);
   }
-  
-
-  console.log(finalArray)
+ 
+  console.log(finalArray);
 
   var i;
   
